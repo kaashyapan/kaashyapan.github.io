@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Kaashyapaya Namo Namaha!</title>
-        <link rel="stylesheet" href="css/vendor.css">
-        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-        <script src="js/vendor.js"></script>
-        <script src="js/app.js"></script>
-    </head>
-    <body>
-        <section class="section">
-            <div class="container">
-                <h1 class="title">
-                    Kaashyapan's site
-                </h1>
-                <p class="subtitle">
-                    404 - Nothing here!
-                </p>
-            </div>
-        </section>
-        <script>
-         const main = require('js/main.js')
+        <title>Basic Embed</title>
+        <script type="text/javascript" src="https://unpkg.com/amazon-quicksight-embedding-sdk@1.0.3/dist/quicksight-embedding-js-sdk.min.js"></script>
+        <script type="text/javascript">
+            function embedDashboard() {
+                var containerDiv = document.getElementById("dashboardContainer");
+                var params = {
+                    url: "https://us-east-1.quicksight.aws.amazon.com/embed/ba108552996744edb923f3896309f457/dashboards/dea185b2-9d07-4eb6-bcf0-c372cc8d7899?isauthcode=true&identityprovider=quicksight&code=AYABeF2Py3mXS_i7cb8TqUoaqwAAAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy1lYXN0LTE6MjU5NDgwNDYyMTMyOmtleS81NGYwMjdiYy03MDJhLTQxY2YtYmViNS0xNDViOTExNzFkYzMAuAECAQB4l6pD2xhUY2WZ3LzF9ADzT04TvWztj3rAluPGmvaui90BVJdzgauxu9LOq_S-sQJnXAAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDBblzt4dHrEy216IpgIBEIA7JGI5YeFq2k-s0YpU-QLHvu2y-1_UzVE0CVa4Df83m6gAr2UoIi2V1BTPDyFscv-QbG4WCSXsfiD3OHcCAAAAAAwAABAAAAAAAAAAAAAAAAAArHDMbUNZ6quwi3M5zaRpm_____8AAAABAAAAAAAAAAAAAAABAAAAmyJO159HkZMNy3Rr0NpMXcZ61m7zso3nJ4iZWdEr77nxygh_WncemDwUXDkybFuS9zRbBU74ZDyNr1wGVvDLaQqOg3hJXhtrkhvjmKTtP-whVPwiBeTzs_vDmpWZJvXZd1FJ2ZVQ7dfXEMwB_Jyf0Sm4EUXJV2CgtrlaaQfapUUWd56Zm9g7RqYUsUyH-RYuT9MuSxdREtUEOSSCGday21rxxpXI8IKfBn_W2Q%3D%3D",
+                    container: containerDiv,
+                    parameters: {
+                        pondId: 21
+                    },
+                    height: "AutoFit",
+                    width: "1000px"
+                };
+                var dashboard = QuickSightEmbedding.embedDashboard(params);
+                dashboard.on('error', function () {});
+                dashboard.on('load', function () {});
+                dashboard.setParameters({pondId: 21});
+            }
         </script>
+
+    </head>
+
+    <body onload="embedDashboard()">
+        <div id="dashboardContainer"></div>
     </body>
-</html>
+
+</html
